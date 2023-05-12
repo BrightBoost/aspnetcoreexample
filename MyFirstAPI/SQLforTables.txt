@@ -1,0 +1,19 @@
+﻿CREATE TABLE [dbo].[ProductProfile] (
+    [Id]        INT           IDENTITY (1, 1) NOT NULL,
+    [Link]      VARCHAR (150) NULL,
+    [Img]       VARCHAR (150) NULL,
+    [ProductId] INT           NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC),
+    CONSTRAINT [unique_pid] UNIQUE NONCLUSTERED ([ProductId] ASC),
+    CONSTRAINT [FK_ProductProfile_ToProduct] FOREIGN KEY ([ProductId]) REFERENCES [dbo].[Products] ([Id])
+);
+
+CREATE TABLE [dbo].[Products] (
+    [Id]          INT          IDENTITY (1, 1) NOT NULL,
+    [Name]        VARCHAR (50) NULL,
+    [Description] VARCHAR (50) NULL,
+    [Category]    VARCHAR (50) NULL,
+    [Price]       MONEY        NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
